@@ -1,3 +1,11 @@
-import Loader from 'loader'
+import Dorayaki from './engine/dorayaki.js'
 
-Loader.load("model.glt")
+var dora = null;
+
+const init = () => {
+    const canvas = document.getElementById("canvas")
+    dora = new Dorayaki();
+    dora.init(canvas)
+    dora.loadModel("assets/models/model.gltf")
+}
+addEventListener("DOMContentLoaded", init)

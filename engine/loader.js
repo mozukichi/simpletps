@@ -1,12 +1,16 @@
-export {
-    /**
-     * 
-     */
-    load(src) {
-        return Promise((resolve) => {
+import Model from "./model.js"
+
+const Loader = {
+    load(gl, src) {
+        return new Promise((resolve) => {
             fetch(src).then((res) => {
-                console.log(res.json)
+                return res.json()
+            }).then(json => {
+                const model = new Model(gl, json)
+                resolve(model)
             })
         })
     } 
 }
+
+export default Loader;
